@@ -1,9 +1,10 @@
 <div class="w3-center w3-padding-32">
-
-    <!--//Antony Fortin-->>
     <div class="w3-bar">
-
     <?php
+    //Antony Fortin-->
+      if(!isset($filas)){
+        header("Location: index.php");
+      }
       $paginate_max = 4;
       if($filas != 0){
         $nextpage = $pagina + 1;

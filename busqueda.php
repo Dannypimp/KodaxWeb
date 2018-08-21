@@ -1,5 +1,6 @@
-<!DOCTYPE html>
 //Antony Fortin
+<?php ob_start(); ?>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Principal |KODAX.Clinical|</title>
@@ -7,11 +8,16 @@
 </head>
 <body>
   <?php
-      include("buscar.php");
+      include("lib/otros/buscar.php");
   ?>
   <div class="w3-main w3-content w3-padding"  id="div1index" >
     <h1 id="h1index">Resultados</h1>
     <div class="w3-row-padding w3-padding-16 w3-center" >
+    <?php if($_SESSION["busqueda"]==0){  ?>
+        <div class="w3-container">
+          <h1><i class="fa fa-warning"></i> No se encontraron resultados</h1>
+        </div>
+      <?php } ?>
       <?php $num=1; foreach ($rows as $key): ?>
       <div class="w3-quarter">
         <div class="w3-card-4" id="div4index">

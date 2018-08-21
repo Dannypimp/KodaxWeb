@@ -5,6 +5,80 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+/*nav*/
+.topnav {
+    position: fixed;
+    z-index:1;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    background-color: white;
+  }
+  
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 10px;
+    text-decoration: none;
+    font-size: 17px; 
+  }
+  
+  .topnav form {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .topnav .icon {
+    display: none;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+      float: right;
+      display: block;
+    }
+    .topnav form {display:none;}
+  }
+  
+  @media screen and (max-width: 650px) {
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    .topnav.responsive form {
+      float: none;
+      display: block;
+      text-align: left;
+      left: left;
+    }
+  }
+/*end nav*/
+
 #descripcion{
     display: block;
     display: -webkit-box;
@@ -34,8 +108,31 @@
     text-overflow: ellipsis;
 		text-align:center;
 }
-#bar{
-	margin-top:5px;
+#descripcion2{
+    padding-top: 10px;
+    display: block;
+    display: -webkit-box;
+    max-width: 100%;
+    height: 2em;
+    margin: 0 auto;
+    line-height: 1.3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+		text-align:center;
+}
+#titulo2{
+	padding-top: 5px;
+    display: block;
+    display: -webkit-box;
+    max-width: 100%;
+    height: 1em;
+    margin: 0 auto;
+    line-height: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+		text-align:center;
 }
 #div1index{
 	color:white;
@@ -51,6 +148,10 @@
 #imgindex{
 	width:100%;
 }
+#imgmedicos{
+    width:100%;
+    height: 200px;
+}
 #div1bar{
 	margin-top:46px;
 }
@@ -59,7 +160,7 @@
 	display:block;
     }
 body{
-	background: #2e6da4;
+	background:#2e6da4;
 	-webkit-background-size: cover;
 	background-size: cover;
 	background-attachment: fixed;

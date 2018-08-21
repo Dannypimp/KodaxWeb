@@ -1,5 +1,4 @@
 <?php
-//Antony Fortin
   include("lib/conexion.php");
   $sql2 ="SELECT * FROM categorias";
   $stmt2=$conexion->query($sql2);

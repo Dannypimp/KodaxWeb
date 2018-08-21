@@ -1,5 +1,6 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
-//Daniel Figuero
+//Daniel Figueroa
 <html>
 <head>
   <title>Principal |KODAX.Clinical|</title>
@@ -7,7 +8,7 @@
   <style>
        /* Set the size of the div element that contains the map */
       #map {
-        height: 400px;  /* The height is 400 pixels */
+        height: 568px;  /* The height is 400 pixels */
         width: 100%;  /* The width is the width of the web page */
        }
     </style>
@@ -24,22 +25,36 @@
       foreach ($rows as $key){}
       include ("bar.php");
   ?>
-  <div class="w3-container w3-content w3-padding-64" style="max-width:800px;margin-top:30px" id="">
-    <div class="w3-card-4" style="width:100%;">
-      <header class="w3-container w3-blue">
-        <h1><?php echo $key["nombre_clinica"] ?></h1>
-      </header>
-      <div class="w3-container" style="background:white">
-        <h4><i class="fa fa-user"></i><strong> Médico:</strong> <?php echo $key["name"] ?></h4>
-        <h4><i class="fa fa-certificate"></i><strong> Especialidad:</strong> <?php echo $key["categoria"] ?></h4>
-        <h4><i class="fa fa-at"></i><strong> Correo:</strong> <?php echo $key["correo"] ?></h4>
-        <h4><i class="fa fa-phone"></i><strong> Telefono:</strong> <?php echo $key["telefono"] ?></h4>
-        <h4><i class="fa fa-directions"></i><strong> Dirección:</strong> <?php echo $key["direccion"] ?></h4>
-        <h4><i class="fa fa-clock"></i><strong> Horario:</strong> <?php echo $key["horario"] ?></h4>
+  <div class="w3-container w3-content w3-padding-64" style="max-width:2000px" id="">
+    <div class="w3-card-4 w3-col m6">
+      <div class="w3-container w3-blue">
+        <h2>Información</h2>
+      </div>
+      <div class="w3-container w3-white">
+        <label style="margin-top:10px">Nombre de la Clínica</label>
+        <h4><i class="fa fa-hospital"></i> <?php echo $key["nombre_clinica"] ?></h4>
+        <label style="margin-top:10px">Nombre del Médico(a)</label>
+        <h4><i class="fa fa-user"></i> <?php echo $key["name"] ?></h4>
+        <label style="margin-top:10px">Correo Electrónico</label>
+        <h4><i class="fa fa-at"></i> <?php echo $key["correo"] ?></h4>
+        <label style="margin-top:10px">Dirección</label>
+        <h4><i class="fa fa-directions"></i> <?php echo $key["direccion"] ?></h4>
+        <label style="margin-top:10px">Horario</label>
+        <h4><i class="fa fa-clock"></i> <?php echo $key["horario"] ?></h4>
+        <label style="margin-top:10px">Teléfono</label>
+        <h4><i class="fa fa-phone"></i> <?php echo $key["telefono"] ?></h4>
+        <label style="margin-top:10px"> Especialidad</label>
+        <h4><i class="fa fa-certificate"></i><?php echo $key["categoria"] ?></h4>
+        <div id="mapRegistro"></div>
       </div>
     </div>
-  </div>
-  <div class="w3-container w3-content w3-padding-64" style="max-width:1500px;" id="map">
+    <div class="w3-card-4 w3-col m6" >
+      <div class="w3-container w3-blue">
+        <h2>Ubicación</h2>
+      </div>
+      <div class="w3-row w3-padding-32" id="map" >
+      </div>
+    </div>
   </div>
   <script>
       // Initialize and add the map
