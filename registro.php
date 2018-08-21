@@ -1,17 +1,10 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
 //Delmy Ossiris Cruz
-
 <html>
 <head>
   <title>Principal |KODAX.Clinical|</title>
-  <?php require('lib/links.php'); ?>
-  <style>
-    /* Set the size of the div element that contains the map */
-    #mapRegistro {
-      height: 400px;  /* The height is 400 pixels */
-      width: 100%;/* The width is the width of the web page */
-     }
-  </style>
+  <?php include ('lib/links.php'); include ('lib/otros/stylemap.php') ?>
 </head>
 <body>
   <?php include("bar.php"); ?>
@@ -21,20 +14,20 @@
         <h2>Registro</h2>
       </div>
       <form class="w3-container w3-white" action="insertar.php" method="post" enctype="multipart/form-data">
-        <label style="margin-top:10px">Nombre de la Cinica</label>
-        <input class="w3-input" type="text" required name="nombreClinica">
+        <label style="margin-top:10px">Nombre de la Clínica</label>
+        <input class="w3-input" type="text" required name="nombreClinica" title="Sólo debe poseer 30 caracteres maximo" maxlength="30">
         <label style="margin-top:10px">Nombre del Médico(a)</label>
-        <input class="w3-input" type="text" required name="nombre">
-        <label style="margin-top:10px">Correo Electronico</label>
-        <input class="w3-input" type="email" required name="correo">
+        <input class="w3-input" type="text" required name="nombre" title="Sólo debe poseer letras y 30 caracteres maximo" maxlength="30">
+        <label style="margin-top:10px">Correo Electrónico</label><div id="Info"></div>
+        <input class="w3-input" type="email" id="mail" required name="correo">
         <label style="margin-top:10px">Contraseña</label>
         <input class="w3-input" type="password" required name="password">
         <label style="margin-top:10px">Dirección</label>
         <input class="w3-input" type="text" required name="direccion">
         <label style="margin-top:10px">Horario</label>
         <input class="w3-input" type="text" required name="horario">
-        <label style="margin-top:10px">Telefono</label>
-        <input class="w3-input" type="text" required name="telefono">
+        <label style="margin-top:10px">Teléfono</label>
+        <input class="w3-input" type="text" required maxlength="8" name="telefono">
         <label style="margin-top:10px">Especialidad</label>
         <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
           <select name="especialidad">
@@ -58,77 +51,6 @@
       </form>
     </div>
   </div>
-  <script>
-
-      ubicacion();
-      var markers = [];
-
-      function ubicacion() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-          x.innerHTML = "La geolocalización no es compatible con este navegador.";
-        }
-      }
-
-      function showPosition(position) {
-
-        var lat = position.coords.latitude;
-        var lon = position.coords.longitude;
-        var mapa = document.getElementById("mapRegistro");
-        if (mapa == undefined)
-          return;
-        var mapProp = {
-          center: new google.maps.LatLng(lat, lon),
-          zoom: 12,
-          mapTypeId: google.maps.MapTypeId.HYBRID,
-          mapTypeControl: true,
-          mapTypeControlOptions: {
-            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-          }
-        };
-
-        var map = new google.maps.Map(mapa, mapProp);
-
-        google.maps.event.addListener(map, 'click', function(event) {
-
-          placeMarker(map, event.latLng);
-          var latitud = event.latLng.lat();
-          var longitud = event.latLng.lng();
-
-          document.getElementById("latitude").value = latitud;
-          document.getElementById("longitude").value = longitud;
-
-        });
-
-      }
-
-      function placeMarker(map, location) {
-
-        for (var i = 0; i < markers.length; i++) {
-          //var latLng = new google.maps.LatLng(markers[i].lat, markers[i].lng);
-          markers[i] = new google.maps.Marker({
-            position: location,
-            map: map,
-            animation: google.maps.Animation.BOUNCE
-          });
-
-          bounds.extend(markers[i].getPosition());
-          map.fitBounds(bounds);
-        }
-
-
-        markers = new google.maps.Marker({
-          position: location,
-          map: map,
-          animation: google.maps.Animation.BOUNCE
-        });
-      }
-
-   </script>
-   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKDUTz8Uq47j1NLhJIvd0DRfD4hREetCA&amp;libraries=places" async="" defer=""></script>
-   <!--<script async defer
-   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKDUTz8Uq47j1NLhJIvd0DRfD4hREetCA&callback=initMap">
- </script>-->
+  <?php include ("lib/otros/mapregis.php"); ?>
 </body>
 </html>

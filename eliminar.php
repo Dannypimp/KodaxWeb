@@ -1,5 +1,5 @@
-<?php
 //Katling Jimenez
+<?php
     include('lib/conexion.php');
     session_start();
     $var=$_SESSION['user'];

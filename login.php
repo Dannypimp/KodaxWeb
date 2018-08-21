@@ -1,19 +1,24 @@
+<?php ob_start();?>
 <!DOCTYPE html>
 //Daniel Figueroa
 <html>
 <head>
   <title>Principal |KODAX.Clinical|</title>
-  <?php require('lib/links.php'); ?>
+  <?php include('lib/links.php'); ?>
 </head>
 <body>
-  <?php include("bar.php"); ?>
+  <?php include("bar.php");
+        if(isset($_SESSION['user'])){
+          header('Location: perfil.php');
+        }
+  ?>
   <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="">
     <div class="w3-card-4">
       <div class="w3-container w3-blue">
         <h2>Iniciar Sesión</h2>
       </div>
       <form class="w3-container w3-white" action ="logueo.php" method="post">
-        <label style="margin-top:10px">Correo Electronico</label>
+        <label style="margin-top:10px">Correo Electrónico</label>
         <input class="w3-input" type="text" required name="correo">
         <label style="margin-top:10px">Contraseña</label>
         <input class="w3-input" type="password" required name="password">

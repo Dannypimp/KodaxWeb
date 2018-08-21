@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-
 //Keydi Xiomara Vasquez
-
+<?php ob_start(); ?>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Principal |KODAX.Clinical|</title>
   <?php include('lib/links.php'); ?>
 </head>
 <body>
-  <?php include("paginacion.php"); ?>
+  <?php include("lib/otros/paginacion.php"); ?>
   <div class="w3-main w3-content w3-padding"  id="div1index" >
     <h1 id="h1index">Especialidades</h1>
     <div class="w3-row-padding w3-padding-16 w3-center" >
@@ -28,6 +27,6 @@
     <div class="w3-row-padding w3-padding-16 w3-center">
   <?php }$num++; endforeach; ?>
   </div>
-  <?php include("paginas.php") ?>
+  <?php include("lib/otros/paginas.php") ?>
 </body>
 </html>
